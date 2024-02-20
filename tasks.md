@@ -5,56 +5,49 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 1) Find all the matches from 2017.
 
 ```sql
-<!-- Copy solution here -->
-
+SELECT * from matches WHERE season = 2017;
 
 ```
 
 2) Find all the matches featuring Barcelona.
 
 ```sql
-<!-- Copy solution here -->
-
+SELECT * from matches WHERE hometeam = 'Barcelona' OR awayteam = 'Barcelona';
 
 ```
 
 3) What are the names of the Scottish divisions included?
 
 ```sql
-<!-- Copy solution here -->
-
+SELECT * from matches WHERE hometeam = 'Barcelona' OR awayteam = 'Barcelona';
 
 ```
 
 4) Find the value of the `code` for the `Bundesliga` division. Use that code to find out how many matches Freiburg have played in that division. HINT: You will need to query both tables
 
 ```sql
-<!-- Copy solution here -->
-
+SELECT COUNT(matches) from matches WHERE (hometeam = 'Freiburg' OR awayteam = 'Freiburg') AND division_code = (SELECT code from divisions WHERE name = 'Bundesliga');
 
 ```
 
 5)  Find the teams which include the word "City" in their name. HINT: Not every team has been entered into the database with their full name, eg. `Norwich City` are listed as `Norwich`. If your query is correct it should return four teams.
 
 ```sql
-<!-- Copy solution here -->
-
+SELECT DISTINCT hometeam FROM matches where LOWER(hometeam) LIKE LOWER('%City%');
 
 ```
 
 6) How many different teams have played in matches recorded in a French division?
 
 ```sql
-<!-- Copy solution here -->
-
+SELECT DISTINCT hometeam FROM matches WHERE division_code = ANY(SELECT code FROM divisions WHERE country = 'France');
 
 ```
 
 7) Have Huddersfield played Swansea in any of the recorded matches?
 
 ```sql
-<!-- Copy solution here -->
-
+SELECT COUNT(*) FROM matches WHERE (hometeam = 'Huddersfield' AND awayteam = 'Swansea') OR (hometeam = 'Swansea' AND awayteam = 'Huddersfield');
 
 ```
 
