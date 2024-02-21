@@ -19,7 +19,7 @@ SELECT * FROM matches WHERE hometeam = 'Barcelona' OR awayteam = 'Barcelona';
 3) What are the names of the Scottish divisions included?
 
 ```sql
-SELECT * FROM matches WHERE hometeam = 'Barcelona' OR awayteam = 'Barcelona';
+SELECT name FROM divisions WHERE country = 'Scotland';
 
 ```
 
