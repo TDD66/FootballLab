@@ -67,12 +67,7 @@ SELECT * FROM matches ORDER BY fthg + ftag DESC, fthg DESC;
 10) Find the name of the division in which the most goals were scored in a single season and the year in which it happened.
 
 ```sql
-<<<<<<< HEAD
-SELECT name, season FROM divisions, matches WHERE code = (SELECT division_code FROM matches GROUP BY division_code, season ORDER BY SUM(fthg + ftag) DESC LIMIT 1) AND season = (SELECT season FROM matches GROUP BY division_code, season ORDER BY SUM(fthg + ftag) DESC LIMIT 1) LIMIT 1;
-
-=======
 SELECT divisions.name, season from divisions JOIN matches ON divisions.code = matches.division_code GROUP BY season, divisions.name ORDER BY SUM(fthg + ftag) DESC LIMIT 1;
->>>>>>> 9a26c4e (Change solution to question 10 using a JOIN instead of brute forcing without JOIN.)
 ```
 
 ### Useful Resources
